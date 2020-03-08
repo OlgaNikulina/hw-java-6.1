@@ -1,6 +1,6 @@
 package ru.netology.stats;
 
-public class StatService {
+public class StatService<count> {
     public int calculateSum(int[] purchases) {
         int sum = 0;
         for (int purchase : purchases) {
@@ -9,37 +9,60 @@ public class StatService {
         return sum;
     }
 
-
     public int calculateAverage(int[] purchases) {
         int sum = 0;
-        for (int purchase = 0; purchase < purchases.length; purchase++) {
-            sum += purchases[(int) purchase];
+        for (int i = 0; i < purchases.length; i++) {
+            sum += purchases[i];
         }
-        int average = sum / 12;
+        int average = sum / purchases.length;
         return average;
     }
 
-
-
     public int findMonthWithMaxPurchase(int[] purchases) {
-        int MaxMonth = purchases[0];
-        for (int purchase = 1; purchase < purchases.length; purchase++) {
-            if (purchases[(int) purchase] > MaxMonth) {
-                MaxMonth = purchases[(int) purchase];
+        int maxMonth = purchases[0];
+        int numberOfMonth = 0;
+        for (int i = 1; i < purchases.length; i++) {
+            if (purchases[i] > maxMonth) {
+                maxMonth = purchases[i];
+                numberOfMonth = i;
             }
         }
-        return purchases[];
+        return numberOfMonth;
     }
+
+    public int findMonthWithMinPurchase(int[] purchases) {
+        int minMonth = purchases[0];
+        int numberOfMonth = 0;
+        for (int i = 1; i < purchases.length; i++) {
+            if (purchases[i] < minMonth) {
+                minMonth = purchases[i];
+                numberOfMonth = i;
+            }
+        }
+        return numberOfMonth;
+    }
+
     public int findMonthsUnderAverage(int[] purchases) {
-        int sum = 0;
-        int purchase;
-        for (purchase = 0; purchases.length > purchase; purchase++) {
-            sum += purchases[(int) purchase];
+        int average = calculateAverage(purchases);
+        int count = purchases[0];
+        for (int i = 0; purchases.length > i; i++) {
         }
-        int average = sum / 12;
-        if (purchases[purchase] < average) {
-            average = purchases[purchase];
+        if (purchases[count] < average) {
+            average = purchases[count];
         }
-        return purchases[purchase];
+
+        return purchases[count];
+    }
+
+    public int findMonthsOverAverage(int[] purchases) {
+        int average = calculateAverage(purchases);
+        int count = purchases[0];
+        for (int i = 0; purchases.length > i; i++) {
+        }
+        if (purchases[count] > average) {
+            average = purchases[count];
+        }
+
+        return purchases[count];
     }
 }
