@@ -1,6 +1,6 @@
 package ru.netology.stats;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;;
 
 class StatServiceTest {
     int[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
@@ -24,7 +24,7 @@ class StatServiceTest {
     @org.junit.jupiter.api.Test
     void findMonthWithMaxPurchase() {
         StatService service = new StatService();
-        int expected = 5;
+        int expected = 7;
         int actual = service.findMonthWithMaxPurchase(purchases);
         assertEquals(expected, actual);
     }
@@ -40,7 +40,7 @@ class StatServiceTest {
     @org.junit.jupiter.api.Test
     void findMonthsUnderAverage() {
         StatService service = new StatService();
-        int expected = 7;
+        int expected = 5;
         int actual = service.findMonthsUnderAverage(purchases);
         assertEquals(expected, actual);
     }
@@ -48,8 +48,8 @@ class StatServiceTest {
     @org.junit.jupiter.api.Test
     void findMonthsOverAverage() {
         StatService service = new StatService();
-        int expected = 7;
-        int actual = service.findMonthsUnderAverage(purchases);
+        int expected = 5;
+        int actual = service.findMonthsOverAverage(purchases);
         assertEquals(expected, actual);
     }
 }
