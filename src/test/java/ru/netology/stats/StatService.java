@@ -25,6 +25,9 @@ public class StatService<count, countOfMonths> {
                 maxMonth = purchases[i];
                 numberOfMonth = i;
             }
+            if (maxMonth == purchases[i]) {
+                numberOfMonth++;
+            }
         }
         return numberOfMonth;
     }
